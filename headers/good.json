@@ -1,0 +1,23 @@
+{
+    "X-Frame-Options": {
+        "title": "X-Frame-Options",
+        "description": "sdasda",
+        "about": [
+            "sdadas"
+        ],
+        "tech": [
+            "dadsada"
+        ]
+    },
+    "X-XSS-Protection": {
+        "title": "X-XSS-Protection",
+        "description": "sdasda",
+        "about": [
+            "about x xss protection"
+        ],
+        "tech": [
+            "dadsada"
+        ]
+    }
+
+}

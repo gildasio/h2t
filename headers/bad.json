@@ -1,0 +1,42 @@
+{
+    "Server": {
+        "title": "Server",
+        "description": "asdsadsa",
+        "condition": true,
+        "about": [
+            "https://...",
+            "http://........"
+        ],
+        "tech": [
+            "https:/d/as/dsa",
+            "dasdsadas"
+        ]
+    },
+    "Set-Cookie": [
+        {
+            "title": "Cookie HTTP Only",
+            "description": "asdasdsa",
+            "condition": "HttpOnly",
+            "about": [
+                "ADAsdsadsADASdas",
+                "sadadAD3432das",
+                "da90d32d209"
+            ],
+            "tech": [
+                "asddasd"
+            ]
+        },
+        {
+            "title": "Cookie over SSL/TLS",
+            "description": "dasdsad",
+            "condition": "Secure",
+            "about": [
+                "dsadsa"
+            ],
+            "tech": [
+                "dsadsadas"
+            ]
+        }
+    ]
+
+}
