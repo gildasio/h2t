@@ -47,15 +47,17 @@ def scanHeadersURL(url, args):
 
 	output.printBright(url)
 
-	if args.all:
+	if args.bad:
 		check(response, category="bad")
-		check(response, category="good")
-	elif args.bad:
-		check(response, category="good")
 	elif args.good:
+		check(response, category="good")
+	elif args.all:
+		check(response, category="bad")
 		check(response, category="good")
 
 def scanHeaders(args):
+	output.help()
+
 	if os.path.isfile(args.url):
 		urls = files.readLines(args.url)
 		for url in urls:

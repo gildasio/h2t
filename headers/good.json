@@ -18,6 +18,15 @@
         "tech": [
             "dadsada"
         ]
+    },
+    "Referrer-Policy": {
+        "title": "Referrer-Policy",
+        "description": "sdasda",
+        "about": [
+            "about x xss protection"
+        ],
+        "tech": [
+            "dadsada"
+        ]
     }
-
 }
