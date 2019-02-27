@@ -22,13 +22,19 @@ def clearBadHeaders(intersect, headers, catalog):
 
     return result
 
-def check(headers, catalog, category="good", status_only=False):
+def check(headers, catalog, category="good", status=False, headers2analyze=False):
+    if isinstance(headers2analyze, list):
+        lookFor = headers2analyze
+    else:
+        lookFor = catalog.keys()
+
     if category == "good":
-        if status_only:
-            result = set(catalog.keys()) & set(headers.keys())
+        if status:
+            result = set(lookFor) & set(headers.keys())
         else:
-            result = set(catalog.keys()) - set(headers.keys())
+            result = set(lookFor) - set(headers.keys())
     elif category == "bad":
-        result = set(catalog.keys()) & set(headers.keys())
+        result = set(lookFor) & set(headers.keys())
         result = clearBadHeaders(result, headers, catalog)
+
     return result
