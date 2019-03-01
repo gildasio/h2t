@@ -1,42 +1,48 @@
 {
     "server": {
         "title": "Server",
-        "description": "asdsadsa",
+        "description": "Server headers show information about the software used to provide the website. Show software's version it's a lot information to give to attackers.",
         "condition": true,
-        "about": [
-            "https://...",
-            "http://........"
-        ],
-        "tech": [
-            "https:/d/as/dsa",
-            "dasdsadas"
+        "refs": [
+			"https://tools.ietf.org/html/rfc2616#section-14.38",
+			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#servers"
         ]
     },
     "set-cookie": [
         {
             "title": "Cookie HTTP Only",
-            "description": "asdasdsa",
+            "description": "Using the flag 'HttpOnly' the cookie won't be read from JavaScript only sent by HTTP",
             "condition": "HttpOnly",
-            "about": [
-                "ADAsdsadsADASdas",
-                "sadadAD3432das",
-                "da90d32d209"
-            ],
-            "tech": [
-                "asddasd"
+            "refs": [
+				"https://tools.ietf.org/html/rfc6265#section-5.2.6",
+				"https://github.com/gildasio/h2t/blob/docs/headers.md#httponly",
+				"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Session_Management_Cheat_Sheet.md#httponly-attribute",
+				"https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies",
+				"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md#bonus-rule-1-use-httponly-cookie-flag",
+				"https://www.owasp.org/index.php/HttpOnly"
             ]
         },
         {
             "title": "Cookie over SSL/TLS",
-            "description": "dasdsad",
+            "description": "Using the flag 'Secure' the cookie will be sent only in HTTPS traffic avoiding MITM read its content",
             "condition": "Secure",
-            "about": [
-                "dsadsa"
-            ],
-            "tech": [
-                "dsadsadas"
+            "refs": [
+				"https://tools.ietf.org/html/rfc6265#section-5.2.5",
+				"https://github.com/gildasio/h2t/blob/docs/headers.md#secure",
+				"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Session_Management_Cheat_Sheet.md#secure-attribute",
+				"https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies",
+				"https://www.owasp.org/index.php/SecureFlag"
             ]
-        }
+        },
+		{
+			"title": "Cookie from samesite",
+			"description": "Samesite cookies tells to browser send the cookie only in requests initiated from the same domain. It avoid CSRF attacks",
+			"condition": "SameSite",
+			"refs": [
+				"https://tools.ietf.org/html/draft-west-first-party-cookies-07",
+				"https://caniuse.com/#feat=same-site-cookie-attribute",
+				"https://www.owasp.org/index.php/SameSite"
+			]
+		}
     ]
-
 }

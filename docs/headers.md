@@ -2,6 +2,119 @@
 
 Tech information about headers
 
+## Cookies
+
+### HttpOnly
+
+#### Configuration
+
+##### Apache
+
+~~~
+# Apache Conf
+Header edit Set-Cookie ^(.*)$ $1;HttpOnly
+~~~
+
+##### Nginx
+
+~~~
+# Nginx conf
+proxy_cookie-Path / "/; HttpOnly"
+~~~
+
+##### PHP
+
+~~~
+# php.ini
+session.cookie_httponly = True
+~~~
+
+[Documentation](http://php.net/session.cookie-httponly)
+
+### Same Site
+
+#### Configuration
+
+##### Apache
+
+~~~
+# Apache conf
+Header edit Set-Cookie ^(.*)$ $1;; SameSite=strict
+~~~
+
+##### Nginx
+
+~~~
+# Nginx conf
+proxy_cookie-Path / "/; ; SameSite=strict"
+~~~
+
+### Secure
+
+#### Configuration
+
+##### Apache
+
+~~~
+# Apache Conf
+Header edit Set-Cookie ^(.*)$ $1;Secure
+~~~
+
+##### Nginx
+
+~~~
+# Nginx conf: SSL or default
+proxy_cookie_path / "/; Secure";
+~~~
+
+##### PHP
+
+~~~
+# php.ini
+session.cookie_secure = True
+~~~
+
+[Documentation](http://php.net/session.cookie-secure)
+
+##### 
+
+## Servers
+
+### Configuration
+
+#### Apache
+
+* Core Way
+
+~~~
+# Apache Conf
+ServerTokens Prod
+
+# Options
+#  Full => Apache/2.4.2 (Unix) PHP/4.2.2 MyMod/1.2
+#  Prod => Apache
+#  Major => Apache/2
+#  Minor => Apache/2.4
+#  Min => Apache/2.4.2
+#  OS => Apache/2.4.2 (Unix) 
+~~~
+
+* ModSecurity Way
+
+~~~
+<ifmodule mod_security2.c="">
+    ServerTokens Full
+    SecServerSignature "Welcome to the rabbit hole"
+</ifmodule>
+~~~
+
+#### Nginx
+
+~~~
+# Nginx
+server_tokens off;
+~~~
+
 ## X-Frame-Options
 
 ### Options
