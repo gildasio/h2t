@@ -1,5 +1,5 @@
 {
-    "Server": {
+    "server": {
         "title": "Server",
         "description": "asdsadsa",
         "condition": true,
@@ -12,7 +12,7 @@
             "dasdsadas"
         ]
     },
-    "Set-Cookie": [
+    "set-cookie": [
         {
             "title": "Cookie HTTP Only",
             "description": "asdasdsa",

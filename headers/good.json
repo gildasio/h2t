@@ -1,5 +1,5 @@
 {
-    "X-Frame-Options": {
+    "x-frame-options": {
         "title": "X-Frame-Options",
         "description": "X-Frame-Options indicates to browser if the website can be framed or not. It protect against clickjacking attacks",
         "refs": [
