@@ -33,6 +33,12 @@ session.cookie_httponly = True
 
 ### Same Site
 
+#### Options
+
+* Strict: only send cookies in same-site requests
+
+* Lax: send cookies to cross-site requests when it's a GET request
+
 #### Configuration
 
 ##### Apache
@@ -114,6 +120,37 @@ ServerTokens Prod
 # Nginx
 server_tokens off;
 ~~~
+
+## X-Content-Type-Options
+
+### Options
+
+* nosniff: prevents browsers from mime-sniff the content and uses the informed by server
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set X-Content-Type-Options "nosniff"
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header X-Content-Type-Options "nosniff" always;
+~~~
+
+#### IIS
+
+1. IIS Manager
+2. Select the website
+3. Double click in HTTP Response Headers
+4. Click in Add
+5. Add "X-Content-Type-Options" in Name and "nosniff" in Value
+6. Click to save
 
 ## X-Frame-Options
 

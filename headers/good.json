@@ -10,5 +10,13 @@
 			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
 			"https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/"
         ]
-    }
+    },
+	"x-content-type-options": {
+		"title": "X-Content-Type-Options",
+		"description": "Indicates to browser to doens't mime-sniff the content-type of the response and uses wich the server sent",
+		"refs": [
+			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-content-type-options",
+			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"
+		]
+	}
 }
