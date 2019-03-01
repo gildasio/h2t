@@ -1,32 +1,14 @@
 {
     "X-Frame-Options": {
         "title": "X-Frame-Options",
-        "description": "sdasda",
-        "about": [
-            "sdadas"
-        ],
-        "tech": [
-            "dadsada"
-        ]
-    },
-    "X-XSS-Protection": {
-        "title": "X-XSS-Protection",
-        "description": "sdasda",
-        "about": [
-            "about x xss protection"
-        ],
-        "tech": [
-            "dadsada"
-        ]
-    },
-    "Referrer-Policy": {
-        "title": "Referrer-Policy",
-        "description": "sdasda",
-        "about": [
-            "about x xss protection"
-        ],
-        "tech": [
-            "dadsada"
+        "description": "X-Frame-Options indicates to browser if the website can be framed or not. It protect against clickjacking attacks",
+        "refs": [
+			"https://tools.ietf.org/html/rfc7034",
+			"https://caniuse.com/#feat=x-frame-options",
+			"https://github.com/gildasio/h2t/tree/master/docs/headers.md#x-frame-options",
+			"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md",
+			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
+			"https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/"
         ]
     }
 }

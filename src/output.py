@@ -45,14 +45,9 @@ def show(content, verbose, category, status=False):
 	if verbose >= 1:
 		printLine(content["description"], level=2, title="Description")
 	if verbose >= 2:
-		printLine('', level=2, title="About")
-		for item in content["about"]:
+		printLine('', level=2, title="Refs")
+		for item in content["refs"]:
 			printLine(Style.RESET_ALL + item, level=3)
-	if verbose >= 3:
-		printLine('', level=2, title="How to")
-		for item in content["tech"]:
-			printLine(Style.RESET_ALL + item, level=3)
-
 
 	print(Style.RESET_ALL, end="")
 
