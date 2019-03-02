@@ -7,5 +7,5 @@ def get(url, ret="headers", redirects=True, user_agent=False):
     else:
         r = requests.get(url, allow_redirects=redirects)
     if ret == "headers":
-        h = {header.lower(): value for header, value in r.headers.items()}
+        h = {header.lower(): value.lower() for header, value in r.headers.items()}
         return h

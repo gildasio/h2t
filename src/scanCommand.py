@@ -1,7 +1,7 @@
 def checkCondition(header, rule):
     if isinstance(rule['condition'], str) and rule['condition'] not in header:
         return True
-    elif rule['condition']:
+    elif isinstance(rule['condition'], bool) and rule['condition']:
         return True
     else:
         return False
