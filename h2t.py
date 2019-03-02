@@ -20,7 +20,8 @@ def check(response, category):
 	elif category == "bad":
 		content = files.readJSON("headers/bad.json")
 
-	result = scanCommand.check(response, content, category=category, status=args.status, headers2analyze=args.headers)
+	result = scanCommand.ignoreHeaders(scanCommand.check(response, content, category=category, status=args.status, headers2analyze=args.headers), args.ignore_headers)
+    #result = scanCommand.ignoreHeaders(result, args.ignore_headers)
 
 	show(result, content, category, status=args.status)
 
@@ -87,6 +88,7 @@ if __name__ == '__main__':
 	scanParser.add_argument("-g", "--good", action="store_true", help="look at good headers only")
 	scanParser.add_argument("-b", "--bad", action="store_true", help="look at bad headers only")
 	scanParser.add_argument("-H", "--headers", default=False, nargs="+", help="a list of headers to look for (see available in list sub-command)")
+	scanParser.add_argument("-i", "--ignore-headers", default=False, nargs="+", help="a list of headers to ignore in the results")
 
 	scanParser.add_argument("-n", "--no-redirect", action="store_false", help="doesn't follow http redirects")
 	scanParser.add_argument("-u", "--user-agent", default=False, help="set user agent to request")

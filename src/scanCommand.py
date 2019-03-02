@@ -38,3 +38,14 @@ def check(headers, catalog, category="good", status=False, headers2analyze=False
         result = clearBadHeaders(result, headers, catalog)
 
     return result
+
+def ignoreHeaders(result, ignore):
+    if not isinstance(ignore, list):
+        return result
+    elif isinstance(result, set):
+        return result - set(ignore)
+    elif isinstance(result, dict):
+        for i in result:
+            if i in ignore:
+                del result[i]
+        return result
