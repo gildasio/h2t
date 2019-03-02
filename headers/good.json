@@ -18,5 +18,13 @@
 			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-content-type-options",
 			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"
 		]
+	},
+	"x-xss-protection": {
+		"title": "X-XSS-Protection",
+		"description": "This header enable the XSS Reflected filter in the browsers. It can block, sanitize or interprete the response",
+		"refs": [
+			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-xss-protection",
+			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection"
+		]
 	}
 }

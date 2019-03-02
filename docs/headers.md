@@ -193,3 +193,41 @@ add_header X-Frame-Options "SAMEORIGIN";
 #### ASP.Net
 
 Use [NWebsec](https://docs.nwebsec.com/en/latest/nwebsec/Configuring-xfo.html).
+
+## X-XSS-Protection
+
+### Options
+
+* `0`: disable the protection
+* `1`: enable the protection to sanitize the script
+* `1; mode=block`: enable the protection to block the response when detect an attack
+* `1; report=URI`: enable the protection to sanitize the script and report the attack to URI
+* `1; mode=block; report=URI`: enable the protection to block the request and report to URI
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always append X-Xss-Protection "1; mode=block"
+
+# htaccess
+<IfModule mod_headers.c> 
+  Header set X-Xss-Protection "1; mode=block" 
+</IfModule>
+~~~
+#### Nginx
+
+~~~
+# Nginx conf
+add_header X-Xss-Protection "1; mode=block" always;
+~~~
+#### IIS
+
+1. IIS Manager
+2. Select the website
+3. Double click in HTTP Response Headers
+4. Click in Add
+5. Add "X-Xss-Protection" in Name and the option (eg `1; mode=block`) in Value
+6. Click to sabe
