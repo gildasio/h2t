@@ -63,7 +63,6 @@ def results(result, catalog, category, verbose=0, status=False):
 				show(catalog[header][i], verbose, category, status=status)
 		elif isinstance(catalog[header], list):
 			for item in catalog[header]:
-				item["title"] = header + " (" + item["title"] + ")"
 				show(item, verbose, category, status=status)
 		else:
 			show(catalog[header], verbose, category, status=status)

@@ -121,6 +121,36 @@ ServerTokens Prod
 server_tokens off;
 ~~~
 
+## Referrer-Policy
+
+### Options
+
+* `""`: Tells to browser use a referrer policy provided in another place (eg meta-tag), or use the default (no-referrer-when-downgrade)
+* `no-referrer`: Never sends Referer
+* `no-referrer-when-downgrade`: Send entire URL unless change the traffic from HTTPS to HTTP
+* `origin`: Send only origin from URL in Referer
+* `origin-when-cross-origin`: Send only origin from URL in Referer when the destination origin is different from source origin
+* `same-origin`: Send entire URL to same origin but nothing to other origins
+* `strict-origin`: Send only origin to any origin but nothin when change HTTPS to HTTP
+* `strict-origin-when-cross-origin`: Send the entire URL when destination is same origin, only origin when it's another one and nothing when change HTTPS to HTTP
+* `unsafe-url`: Send entire URL in Referer
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache Conf
+Header always set Referrer-Policy strict-origin-when-cross-origin
+~~~
+
+#### Nginx
+
+~~~
+# Nginx Conf
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+~~~
+
 ## X-Content-Type-Options
 
 ### Options

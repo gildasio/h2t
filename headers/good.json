@@ -26,5 +26,16 @@
 			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-xss-protection",
 			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection"
 		]
+	},
+	"referrer-policy": {
+		"title": "Referrer-Policy",
+		"description": "Sets which information will be sent in Referer header",
+		"refs": [
+			"https://w3c.github.io/webappsec-referrer-policy/",
+			"https://caniuse.com/#feat=referrer-policy",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#referrer-policy",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+            "https://scotthelme.co.uk/a-new-security-header-referrer-policy/"
+		]
 	}
 }

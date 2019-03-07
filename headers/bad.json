@@ -10,7 +10,7 @@
     },
     "set-cookie": [
         {
-            "title": "Cookie HTTP Only",
+            "title": "Cookie not HTTP Only",
             "description": "Using the flag 'HttpOnly' the cookie won't be read from JavaScript only sent by HTTP",
             "condition": "(?!httponly)",
             "refs": [
@@ -23,7 +23,7 @@
             ]
         },
         {
-            "title": "Cookie over SSL/TLS",
+            "title": "Cookie not over SSL/TLS",
             "description": "Using the flag 'Secure' the cookie will be sent only in HTTPS traffic avoiding MITM read its content",
             "condition": "(?!secure)",
             "refs": [
@@ -35,7 +35,7 @@
             ]
         },
 		{
-			"title": "Cookie from SameSite",
+			"title": "Cookie not only from SameSite",
 			"description": "Samesite cookies tells to browser send the cookie only in requests initiated from the same domain. It avoid CSRF attacks",
 			"condition": "(?!samesite)",
 			"refs": [
@@ -44,5 +44,16 @@
 				"https://www.owasp.org/index.php/SameSite"
 			]
 		}
-    ]
+    ],
+	"referrer-policy": {
+        "title": "Referrer-Policy with bad practices",
+        "description": "This site use unsafe-url in Referrer-Policy header. Because of this browsers will always send the full URL in any request to any origin",
+        "condition": "unsafe-url",
+        "refs": [
+			"https://w3c.github.io/webappsec-referrer-policy/",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#referrer-policy",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+            "https://scotthelme.co.uk/a-new-security-header-referrer-policy/"
+        ]
+    }
 }
