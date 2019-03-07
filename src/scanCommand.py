@@ -1,5 +1,7 @@
+import re
+
 def checkCondition(header, rule):
-    if isinstance(rule['condition'], str) and rule['condition'] not in header:
+    if isinstance(rule['condition'], str) and re.match(rule['condition'], header):
         return True
     elif isinstance(rule['condition'], bool) and rule['condition']:
         return True

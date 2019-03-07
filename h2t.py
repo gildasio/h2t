@@ -20,8 +20,8 @@ def check(response, category):
 	elif category == "bad":
 		content = files.readJSON("headers/bad.json")
 
-	result = scanCommand.ignoreHeaders(scanCommand.check(response, content, category=category, status=args.status, headers2analyze=args.headers), args.ignore_headers)
-    #result = scanCommand.ignoreHeaders(result, args.ignore_headers)
+	result = scanCommand.check(response, content, category=category, status=args.status, headers2analyze=args.headers)
+	result = scanCommand.ignoreHeaders(result, args.ignore_headers)
 
 	show(result, content, category, status=args.status)
 

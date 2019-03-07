@@ -12,7 +12,7 @@
         {
             "title": "Cookie HTTP Only",
             "description": "Using the flag 'HttpOnly' the cookie won't be read from JavaScript only sent by HTTP",
-            "condition": "httponly",
+            "condition": "(?!httponly)",
             "refs": [
 				"https://tools.ietf.org/html/rfc6265#section-5.2.6",
 				"https://github.com/gildasio/h2t/blob/docs/headers.md#httponly",
@@ -25,7 +25,7 @@
         {
             "title": "Cookie over SSL/TLS",
             "description": "Using the flag 'Secure' the cookie will be sent only in HTTPS traffic avoiding MITM read its content",
-            "condition": "secure",
+            "condition": "(?!secure)",
             "refs": [
 				"https://tools.ietf.org/html/rfc6265#section-5.2.5",
 				"https://github.com/gildasio/h2t/blob/docs/headers.md#secure",
@@ -37,7 +37,7 @@
 		{
 			"title": "Cookie from SameSite",
 			"description": "Samesite cookies tells to browser send the cookie only in requests initiated from the same domain. It avoid CSRF attacks",
-			"condition": "samesite",
+			"condition": "(?!samesite)",
 			"refs": [
 				"https://tools.ietf.org/html/draft-west-first-party-cookies-07",
 				"https://caniuse.com/#feat=same-site-cookie-attribute",
