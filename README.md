@@ -76,16 +76,13 @@ The **scan** subcommand perform a scan in a website looking for their headers.
 
 ~~~
 $ ./h2t.py s -h
-     _     ___  _
-    | |   |__ \| |
-    | |__    ) | |_
-    | '_ \  / /| __|
-    | | | |/ /_| |_
-    |_| |_|____|\__|
-
+|  |_| ||____  | _|  |_
+|   _  ||    --||_    _|
+|__| |_||______|  |__|
 https://github.com/gildasio/h2t
 
-usage: h2t.py scan [-h] [-v] [-a] [-g] [-b] [-H HEADERS [HEADERS ...]] [-n]
+usage: h2t.py scan [-h] [-v] [-a] [-g] [-b] [-H HEADERS [HEADERS ...]]
+                   [-i IGNORE_HEADERS [IGNORE_HEADERS ...]] [-n]
                    [-u USER_AGENT] [-r | -s]
                    url
 
@@ -101,6 +98,8 @@ optional arguments:
   -H HEADERS [HEADERS ...], --headers HEADERS [HEADERS ...]
                         a list of headers to look for (see available in list
                         sub-command)
+  -i IGNORE_HEADERS [IGNORE_HEADERS ...], --ignore-headers IGNORE_HEADERS [IGNORE_HEADERS ...]
+                        a list of headers to ignore in the results
   -n, --no-redirect     doesn't follow http redirects
   -u USER_AGENT, --user-agent USER_AGENT
                         set user agent to request
@@ -140,3 +139,7 @@ Example:
 #### My website
 
 ![h2t against my website](docs/gildasio.png)
+
+## Contribute
+
+For contribute guidelines look at [CONTRIBUTING](CONTRIBUTING.md)
