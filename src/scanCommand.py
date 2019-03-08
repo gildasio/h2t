@@ -25,7 +25,7 @@ def clearBadHeaders(intersect, headers, catalog):
     return result
 
 def check(headers, catalog, category="good", status=False, headers2analyze=False):
-    if isinstance(headers2analyze, list):
+    if isinstance(headers2analyze, set):
         lookFor = headers2analyze
     else:
         lookFor = catalog.keys()

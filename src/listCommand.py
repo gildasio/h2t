@@ -1,6 +1,6 @@
 def listHeaders(catalog, headers=True):
     result = []
-    if isinstance(headers, list):
+    if isinstance(headers, set):
         for header in catalog:
             if header in headers:
                 result.append(header)

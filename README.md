@@ -27,20 +27,14 @@ $ ./h2t.py -h
 
 ~~~
 $ ./h2t.py -h
-|    /~\ |
-|/~\  ./~|~
-|   |/__ |
-
-https://github.com/gildasio/h2t
-
 usage: h2t.py [-h] {list,l,scan,s} ...
 
 h2t - HTTP Hardening Tool
 
 positional arguments:
   {list,l,scan,s}  sub-command help
-    list (l)       show a list of cataloged headers (allowed for use in -H
-                   scan option)
+    list (l)       show a list of available headers in h2t catalog (that can
+                   be used in scan subcommand -H option)
     scan (s)       scan url to hardening headers
 
 optional arguments:
@@ -53,21 +47,19 @@ The **list** subcommand lists all headers cataloged in **h2t** and can show info
 
 ~~~
 $ ./h2t.py list -h
-     ____ ____ ____
-    ||h |||2 |||t ||
-    ||__|||__|||__||
-    |/__\|/__\|/__\|
-
-https://github.com/gildasio/h2t
-
-usage: h2t.py list [-h] [-v] [-a | -H HEADERS [HEADERS ...]]
+usage: h2t.py list [-h] [-p PRINT [PRINT ...]] [-B]
+                   [-a | -H HEADERS [HEADERS ...]]
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --verbose         increase output verbosity
-  -a, --all             List all cataloged headers
+  -p PRINT [PRINT ...], --print PRINT [PRINT ...]
+                        a list of additional information about the headers to
+                        print. For now there are two options: description and
+                        refs (you can use either or both)
+  -B, --no-banner       don't print the h2t banner
+  -a, --all             list all available headers [default]
   -H HEADERS [HEADERS ...], --headers HEADERS [HEADERS ...]
-                        a list of headers to show from catalog
+                        a list of headers to look for in the h2t catalog
 ~~~
 
 ### Scan Subcommand
@@ -75,14 +67,10 @@ optional arguments:
 The **scan** subcommand perform a scan in a website looking for their headers.
 
 ~~~
-$ ./h2t.py s -h
-|  |_| ||____  | _|  |_
-|   _  ||    --||_    _|
-|__| |_||______|  |__|
-https://github.com/gildasio/h2t
-
+$ ./h2t.py scan -h
 usage: h2t.py scan [-h] [-v] [-a] [-g] [-b] [-H HEADERS [HEADERS ...]]
-                   [-i IGNORE_HEADERS [IGNORE_HEADERS ...]] [-n]
+                   [-p PRINT [PRINT ...]]
+                   [-i IGNORE_HEADERS [IGNORE_HEADERS ...]] [-B] [-E] [-n]
                    [-u USER_AGENT] [-r | -s]
                    url
 
@@ -91,19 +79,26 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --verbose         increase output verbosity
-  -a, --all             look at all cataloged headers
-  -g, --good            look at good headers only
-  -b, --bad             look at bad headers only
+  -v, --verbose         increase output verbosity: -v print response headers,
+                        -vv print response and request headers
+  -a, --all             scan all cataloged headers [default]
+  -g, --good            scan good headers only
+  -b, --bad             scan bad headers only
   -H HEADERS [HEADERS ...], --headers HEADERS [HEADERS ...]
-                        a list of headers to look for (see available in list
-                        sub-command)
+                        scan only these headers (see available in list sub-
+                        command)
+  -p PRINT [PRINT ...], --print PRINT [PRINT ...]
+                        a list of additional information about the headers to
+                        print. For now there are two options: description and
+                        refs (you can use either or both)
   -i IGNORE_HEADERS [IGNORE_HEADERS ...], --ignore-headers IGNORE_HEADERS [IGNORE_HEADERS ...]
                         a list of headers to ignore in the results
-  -n, --no-redirect     doesn't follow http redirects
+  -B, --no-banner       don't print the h2t banner
+  -E, --no-explanation  don't print the h2t output explanation
+  -n, --no-redirect     don't follow http redirects
   -u USER_AGENT, --user-agent USER_AGENT
-                        set user agent to request
-  -r, --recommendation  output only recommendations
+                        set user agent to scan request
+  -r, --recommendation  output only recommendations [default]
   -s, --status          output actual status (eg: existent headers only)
 ~~~
 
@@ -128,17 +123,21 @@ Example:
 
 ### Screenshots
 
-#### Help
-
-![h2t help menu](docs/help_main.png)
-
-![h2t help menu for list subcommand](docs/help_list.png)
-
-![h2t help menu for scan subcommand](docs/help_scan.png)
-
-#### My website
+#### Scan from file
 
 ![h2t against my website](docs/gildasio.png)
+
+#### Scan url
+
+![h2t against hackme](docs/hackme.png)
+
+#### Scan verbose
+
+![h2t against my website in verbose mode](docs/gildasio_verbose.png)
+
+#### Headers information
+
+![h2t against my website and print headers information](docs/gildasio_header_info.png)
 
 ## Contribute
 
