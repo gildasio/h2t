@@ -37,5 +37,14 @@
             "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
             "https://scotthelme.co.uk/a-new-security-header-referrer-policy/"
 		]
-	}
+	},
+    "x-download-options": {
+        "title": "X-Download-Options",
+        "description": "In IE it prevents downloaded files to be directly opened in the browser forcing user to save it and them open in any application.",
+        "refs": [
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-download-options",
+            "http://www.nwebsec.com/HttpHeaders/SecurityHeaders/XDownloadOptions",
+            "https://blog.giantgeek.com/?p=788"
+        ]
+    }
 }

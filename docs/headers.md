@@ -182,6 +182,37 @@ add_header X-Content-Type-Options "nosniff" always;
 5. Add "X-Content-Type-Options" in Name and "nosniff" in Value
 6. Click to save
 
+## X-Download-Options
+
+### Options
+
+* noopen: prevents IE directly open a dowloaded file forcing user to save it them open in any application
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set X-Download-Options "noopen"
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header X-Download-Options "noopen" always;
+~~~
+
+### IIS
+
+1. IIS Manager
+2. Select the website
+3. Double click in HTTP Response Headers
+4. Click in ADd
+5. Add "X-Download-Options" in Name and "noopen" in Value
+6. Click to save
+
 ## X-Frame-Options
 
 ### Options
