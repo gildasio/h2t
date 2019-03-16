@@ -1,3 +1,4 @@
+import json
 from colorama import Fore, Style
 
 def help():
@@ -20,14 +21,24 @@ def printColor(message, color):
         color = Fore.RED
     print(color + message + Fore.RESET)
 
-def printLine(message, level=1, category = None, title = None, status=False):
+def getStatus(category, status):
     if category == "good" and status:
+        return "applied"
+    elif category == "good" and not status:
+        return "touse"
+    elif category == "bad":
+        return "toremove"
+
+def printLine(message, level=1, category = None, title = None, status=False):
+    sts = getStatus(category, status)
+
+    if sts == "applied":
         color = Fore.GREEN
         pre = "[+] "
-    elif category == "good" and not status:
+    elif sts == "touse":
         color = Fore.YELLOW
         pre = "[+] "
-    elif category == "bad":
+    elif sts == "toremove":
         color = Fore.RED
         pre = "[-] "
     else:
@@ -39,7 +50,77 @@ def printLine(message, level=1, category = None, title = None, status=False):
     else:
         print(" "*4*level + color + Style.BRIGHT + pre + Fore.RESET + message)
 
-def show(content, fields, category, status=False):
+def printHeader(url, fields, output):
+    if output == "normal":
+        printBright(url)
+    elif output == "csv":
+        csvHeader(fields)
+    elif output =="json":
+        print('[\n\t{"url": "' + url + '",')
+        print('\t"headers": [')
+
+def printFooter(output):
+    if output == "json":
+        print("\t]}\n]")
+
+def csvHeader(fields, delimiter=";"):
+    print("url" + delimiter + "status" + delimiter + "title", end="")
+    
+    if isinstance(fields, list):
+        for field in fields:
+            print(delimiter + field, end="")
+
+    print()
+
+def show(content, fields, category, status=False, output="normal", url=""):
+    if output == "normal":
+        showNormal(content, fields, category, status)
+    elif output == "csv":
+        showCsv(content, fields, category, status, url)
+    elif output == "json":
+        showJson(content, fields, category, status)
+
+def showJson(content, fields, category, status):
+    sts = getStatus(category, status)
+    
+    result = {
+        'title': content['title'],
+        'status': sts
+    }
+
+    if isinstance(fields, list):
+        if "description" in fields:
+            result['description'] = content['description']
+        if "refs" in fields:
+            result['refs'] = content['refs']
+
+    print("\t\t" + json.dumps(result) + ",")
+
+def showCsv(content, fields, category, status, url, delimiter=";"):
+    sts = getStatus(category, status)
+
+    if sts == "applied":
+        status = "applied"
+    elif sts == "touse":
+        status = "recommended to use"
+    elif sts == "toremove":
+        status = "recommended to remove"
+
+    print(url, end=delimiter)
+    print(status, end=delimiter)
+    print(content["title"], end="")
+
+    if isinstance(fields, list):
+        if "description" in fields:
+            print(delimiter + content["description"], end="")
+        if "refs" in fields:
+            print(delimiter, end="")
+            for item in content["refs"]:
+                print(item + " ", end="")
+
+    print()
+
+def showNormal(content, fields, category, status):
     printLine(content["title"], category=category, status=status)
 
     if isinstance(fields, list):
@@ -52,7 +133,7 @@ def show(content, fields, category, status=False):
 
     print(Style.RESET_ALL, end="")
 
-def results(result, catalog, category, fields=0, status=False):
+def results(result, catalog, category, fields=0, status=False, output="normal", url=""):
     for header in result:
         if header not in catalog:
             printBright(header, end="")
@@ -61,13 +142,13 @@ def results(result, catalog, category, fields=0, status=False):
 
         if isinstance(result, dict) and isinstance(result[header], list):
             for i in result[header]:
-                show(catalog[header][i], fields, category, status=status)
+                show(catalog[header][i], fields, category, status=status, output=output, url=url)
         elif isinstance(catalog[header], list):
             for item in catalog[header]:
-                show(item, fields, category, status=status)
+                show(item, fields, category, status=status, output=output)
         else:
-            show(catalog[header], fields, category, status=status)
-
+            show(catalog[header], fields, category, status=status, output=output, url=url)
+        
 def verbose(response, verbose):
     from urllib.parse import urlparse
 

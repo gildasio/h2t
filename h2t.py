@@ -10,11 +10,14 @@ from src import files
 from src import scanCommand
 from src import listCommand
 
-def show(result, content, category, status=True):
+def show(result, content, category, url='', status=True):
     if len(result) > 0:
-        output.results(result, content, category, fields=args.print, status=status)
+        if hasattr(args, "output"):
+            output.results(result, content, category, fields=args.print, status=status, output=args.output, url=url)
+        else:
+            output.results(result, content, category, fields=args.print, status=status)
 
-def check(response, category):
+def check(response, url, category):
     if category == "good":
         content = files.readJSON("headers/good.json")
     elif category == "bad":
@@ -23,7 +26,7 @@ def check(response, category):
     result = scanCommand.check(response, content, category=category, status=args.status, headers2analyze=args.headers)
     result = scanCommand.ignoreHeaders(result, args.ignore_headers)
 
-    show(result, content, category, status=args.status)
+    show(result, content, category, url, status=args.status)
 
 def listHeaders(args):
     bad = files.readJSON("headers/bad.json")
@@ -40,13 +43,14 @@ def listHeaders(args):
     show(result["bad"], bad, "bad")
     show(result["good"], good, "good")
 
-def scanHeadersURL(url, args):
+def scanHeadersURL(url, args, index=0, urls_qtd=1):
     if "://" not in url:
         url = "http://" + url
 
     response = connection.get(url, redirects=args.no_redirect, user_agent=args.user_agent)
 
-    output.printBright(url)
+    if index == 0:
+        output.printHeader(url, args.print, args.output)
 
     if args.verbose:
         output.verbose(response, args.verbose)
@@ -54,12 +58,15 @@ def scanHeadersURL(url, args):
     response = {header.lower(): value.lower() for header, value in response.headers.items()}
 
     if args.bad:
-        check(response, category="bad")
+        check(response, url, category="bad")
     elif args.good:
-        check(response, category="good")
+        check(response, url, category="good")
     elif args.all:
-        check(response, category="bad")
-        check(response, category="good")
+        check(response, url, category="bad")
+        check(response, url, category="good")
+
+    if index + 1 == urls_qtd:
+        output.printFooter(args.output)
 
 def scanHeaders(args):
     if args.no_explanation:
@@ -67,8 +74,9 @@ def scanHeaders(args):
 
     if os.path.isfile(args.url):
         urls = files.readLines(args.url)
-        for url in urls:
-            scanHeadersURL(url, args)
+        urls_qtd = len(urls)
+        for i, url in enumerate(urls):
+            scanHeadersURL(url, args, index=i, urls_qtd=urls_qtd)
     else:
         scanHeadersURL(args.url, args)
 
@@ -97,6 +105,7 @@ if __name__ == '__main__':
     scanParser.add_argument("-i", "--ignore-headers", default=False, nargs="+", help="a list of headers to ignore in the results")
     scanParser.add_argument("-B", "--no-banner", action="store_false", default=True, help="don't print the h2t banner")
     scanParser.add_argument("-E", "--no-explanation", action="store_false", default=True, help="don't print the h2t output explanation")
+    scanParser.add_argument("-o", "--output", choices=["normal", "csv", "json"], default="normal", help="choose which output format to use (available: normal, csv, json)")
 
     scanParser.add_argument("-n", "--no-redirect", action="store_false", help="don't follow http redirects")
     scanParser.add_argument("-u", "--user-agent", help="set user agent to scan request")

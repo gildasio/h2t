@@ -95,6 +95,9 @@ optional arguments:
                         a list of headers to ignore in the results
   -B, --no-banner       don't print the h2t banner
   -E, --no-explanation  don't print the h2t output explanation
+  -o {normal,csv,json}, --output {normal,csv,json}
+                        choose which output format to use (available: normal,
+                        csv, json)
   -n, --no-redirect     don't follow http redirects
   -u USER_AGENT, --user-agent USER_AGENT
                         set user agent to scan request
