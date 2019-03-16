@@ -53,7 +53,18 @@
 			"https://w3c.github.io/webappsec-referrer-policy/",
             "https://github.com/gildasio/h2t/blob/master/docs/headers.md#referrer-policy",
             "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#rp",
             "https://scotthelme.co.uk/a-new-security-header-referrer-policy/"
+        ]
+    },
+    "x-permitted-cross-domain-policies": {
+        "title": "X-Permitted-Cross-Domain-Policies too open",
+        "description": "The most secure option to X-Permitted-Cross-Domain-Policies is none, make sure you really need other option",
+        "condition": "(?!all)",
+        "refs": [
+            "https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-permitted-cross-domain-policies",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xpcdp"
         ]
     }
 }

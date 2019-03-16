@@ -6,6 +6,7 @@
 			"https://tools.ietf.org/html/rfc7034",
 			"https://caniuse.com/#feat=x-frame-options",
 			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-frame-options",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xfo",
 			"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Clickjacking_Defense_Cheat_Sheet.md",
 			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
 			"https://www.troyhunt.com/clickjack-attack-hidden-threat-right-in/"
@@ -16,7 +17,8 @@
 		"description": "Indicates to browser to doens't mime-sniff the content-type of the response and uses wich the server sent",
 		"refs": [
 			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-content-type-options",
-			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"
+			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xcto"
 		]
 	},
 	"x-xss-protection": {
@@ -24,7 +26,8 @@
 		"description": "This header enable the XSS Reflected filter in the browsers. It can block, sanitize or interprete the response",
 		"refs": [
 			"https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-xss-protection",
-			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection"
+			"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xxxsp"
 		]
 	},
 	"referrer-policy": {
@@ -35,6 +38,7 @@
 			"https://caniuse.com/#feat=referrer-policy",
             "https://github.com/gildasio/h2t/blob/master/docs/headers.md#referrer-policy",
             "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#rp",
             "https://scotthelme.co.uk/a-new-security-header-referrer-policy/"
 		]
 	},
@@ -45,6 +49,15 @@
             "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-download-options",
             "http://www.nwebsec.com/HttpHeaders/SecurityHeaders/XDownloadOptions",
             "https://blog.giantgeek.com/?p=788"
+        ]
+    },
+    "x-permitted-cross-domain-policies": {
+        "title": "X-Permitted-Cross-Domain-Policies",
+        "description": "Apply a policy to some clients (mainly Adobe products, as flash player) to access or not a content",
+        "refs": [
+            "https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-permitted-cross-domain-policies",
+            "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xpcdp"
         ]
     }
 }

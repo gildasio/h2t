@@ -255,6 +255,40 @@ add_header X-Frame-Options "SAMEORIGIN";
 
 Use [NWebsec](https://docs.nwebsec.com/en/latest/nwebsec/Configuring-xfo.html).
 
+## X-Permitted-Cross-Domain-Policies
+
+### Options
+
+* none  No policy files are allowed anywhere on the target server, including this master policy file.
+master-only Only this master policy file is allowed.
+by-content-type [HTTP/HTTPS only] Only policy files served with Content-Type: text/x-cross-domain-policy are allowed.
+by-ftp-filename [FTP only] Only policy files whose file names are crossdomain.xml (i.e. URLs ending in /crossdomain.xml) are allowed.
+all All policy files on this target domain are allowed.
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache Conf
+Header always append X-Permitted-Cross-Domain-Policies none
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header X-Permitted-Cross-Domain-Policies "none" always;
+~~~
+
+#### IIS
+
+1. IIS Manager
+2. Select the website
+3. Double click in HTTP Response Headers
+4. Click in ADd
+5. Add "X-Permitted-Cross-Domain-Policies" in Name and the option (eg none) in Value
+6. Click to save
 ## X-XSS-Protection
 
 ### Options
