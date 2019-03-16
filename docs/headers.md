@@ -2,6 +2,36 @@
 
 Tech information about headers
 
+## Clear-Site-Data
+
+### Options
+
+* `cache`
+* `cookies`
+* `storage`
+* `executionContexts`
+* `*`
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+<Directory ~ "logout">
+    Header always set Clear-Site-Data "*"
+</Directory>
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+location /logout/ {
+    add_header Clear-Site-Data "*" always;
+}
+~~~
+
 ## Cookies
 
 ### HttpOnly
@@ -82,7 +112,31 @@ session.cookie_secure = True
 
 [Documentation](http://php.net/session.cookie-secure)
 
-##### 
+## HTTP-Strict-Transport-Security
+
+### Options
+
+* `max-age`: time in seconds to browser store this configuration
+* `includeSubDomains`: instructs browser to act in same way with subdomains
+* `preload`
+
+`preload` isn't an option in the specification but is widely used. More information [here](https://hstspreload.org).
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set Strict-Transport-Security "max-age=31536000 ; includeSubDomains; preload"
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header Strict-Transport-Security "max-age=31536000 ; includeSubDomains; preload";
+~~~
 
 ## Servers
 

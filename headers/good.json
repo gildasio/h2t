@@ -59,5 +59,27 @@
             "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-permitted-cross-domain-policies",
             "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xpcdp"
         ]
+    },
+    "clear-site-data": {
+        "title": "Clear-Site-Data",
+        "description": "Instruct browser to clear the site's local storage data. It's very usefull to a page like '/logout'",
+        "refs": [
+            "https://www.w3.org/TR/clear-site-data/",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#clear-site-data",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data",
+            "https://scotthelme.co.uk/a-new-security-header-clear-site-data/"
+        ]
+    },
+    "strict-transport-security": {
+        "title": "HTTP Strict Transport Security [HSTS]",
+        "description": "Instruct browser to navigate only via HTTPS and save it for future requests",
+        "refs": [
+            "https://tools.ietf.org/html/rfc6797",
+            "https://caniuse.com/#feat=stricttransportsecurity",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#strict-transport-security",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
+            "https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.md",
+            "https://hstspreload.org"
+        ]
     }
 }

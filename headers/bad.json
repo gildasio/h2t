@@ -12,7 +12,7 @@
         {
             "title": "Cookie not HTTP Only",
             "description": "Using the flag 'HttpOnly' the cookie won't be read from JavaScript only sent by HTTP",
-            "condition": "(?!httponly)",
+            "condition": "^((?!httponly).)*$",
             "refs": [
 				"https://tools.ietf.org/html/rfc6265#section-5.2.6",
 				"https://github.com/gildasio/h2t/blob/docs/headers.md#httponly",
@@ -25,7 +25,7 @@
         {
             "title": "Cookie not over SSL/TLS",
             "description": "Using the flag 'Secure' the cookie will be sent only in HTTPS traffic avoiding MITM read its content",
-            "condition": "(?!secure)",
+            "condition": "^((?!secure).)*$",
             "refs": [
 				"https://tools.ietf.org/html/rfc6265#section-5.2.5",
 				"https://github.com/gildasio/h2t/blob/docs/headers.md#secure",
@@ -37,7 +37,7 @@
 		{
 			"title": "Cookie not only from SameSite",
 			"description": "Samesite cookies tells to browser send the cookie only in requests initiated from the same domain. It avoid CSRF attacks",
-			"condition": "(?!samesite)",
+			"condition": "^((?!samesite).)*$",
 			"refs": [
 				"https://tools.ietf.org/html/draft-west-first-party-cookies-07",
 				"https://caniuse.com/#feat=same-site-cookie-attribute",
@@ -60,11 +60,38 @@
     "x-permitted-cross-domain-policies": {
         "title": "X-Permitted-Cross-Domain-Policies too open",
         "description": "The most secure option to X-Permitted-Cross-Domain-Policies is none, make sure you really need other option",
-        "condition": "(?!all)",
+        "condition": "^((?!all).)*$",
         "refs": [
             "https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/xdomain.html",
             "https://github.com/gildasio/h2t/blob/master/docs/headers.md#x-permitted-cross-domain-policies",
             "https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xpcdp"
         ]
-    }
+    },
+    "strict-transport-security": [
+        {
+            "title": "HSTS without includeSubDomains",
+            "description": "It's recommended protect all the subdomains using HTTPS as well",
+            "condition": "^((?!includesubdomains).)*$",
+            "refs": [
+                "https://tools.ietf.org/html/rfc6797",
+                "https://caniuse.com/#feat=stricttransportsecurity",
+                "https://github.com/gildasio/h2t/blob/master/docs/headers.md#http-strict-transport-security",
+                "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
+                "https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.md"
+            ]
+        },
+        {
+            "title": "HSTS without preload",
+            "description": "It's much better secure configure the domain under HSTS preload list in the browser",
+            "condition": "^((?!preload).)*$",
+            "refs": [
+                "https://hstspreload.org",
+                "https://tools.ietf.org/html/rfc6797",
+                "https://caniuse.com/#feat=stricttransportsecurity",
+                "https://github.com/gildasio/h2t/blob/master/docs/headers.md#http-strict-transport-security",
+                "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
+                "https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.md"
+            ]
+        }
+    ]
 }
