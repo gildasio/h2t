@@ -116,5 +116,18 @@
             "https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning",
             "https://scotthelme.co.uk/hpkp-http-public-key-pinning/"
         ]
+    },
+    "content-security-policy": {
+        "title": "Content-Security-Policy too permisive",
+        "description": "Using 'unsafe-inline' reduces the effectiveness of CSP, prefer using Nonce or Hash",
+        "condition": "unsafe-inline",
+        "refs": [
+            "https://www.w3.org/TR/CSP/",
+            "https://content-security-policy.com",
+            "https://caniuse.com/#search=csp",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
+            "https://www.owasp.org/index.php/Content_Security_Policy",
+            "https://scotthelme.co.uk/content-security-policy-an-introduction/"
+        ]
     }
 }

@@ -117,5 +117,17 @@
             "https://scotthelme.co.uk/certificate-transparency-an-introduction/",
             "https://scotthelme.co.uk/a-new-security-header-expect-ct/"
         ]
+    },
+    "content-security-policy": {
+        "title": "Content-Security-Policy",
+        "description": "It defines from where browser can load content such as JavaScript",
+        "refs": [
+            "https://www.w3.org/TR/CSP/",
+            "https://content-security-policy.com",
+            "https://caniuse.com/#search=csp",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
+            "https://www.owasp.org/index.php/Content_Security_Policy",
+            "https://scotthelme.co.uk/content-security-policy-an-introduction/"
+        ]
     }
 }

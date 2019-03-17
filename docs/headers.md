@@ -32,6 +32,28 @@ location /logout/ {
 }
 ~~~
 
+## Content-Security-Policy
+
+### Options
+
+There is a lot of option, it's better see [here](https://content-security-policy.com/#directive).
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set Content-Security-Policy "default-src 'self'"
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header Content-Security-Data "default-src 'self'" always;
+~~~
+
 ## Cookies
 
 ### HttpOnly

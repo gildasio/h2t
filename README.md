@@ -126,6 +126,10 @@ Example:
 
 ### Screenshots
 
+#### List h2t catalog
+
+![h2t catalog](docs/list.png)
+
 #### Scan from file
 
 ![h2t against my website](docs/gildasio.png)
