@@ -112,9 +112,33 @@ session.cookie_secure = True
 
 [Documentation](http://php.net/session.cookie-secure)
 
+## Except-CT
+
+### Options
+
+* `max-age`
+* `enforce`: optional
+* `report-uri`: optional
+
+### Configuration
+
+#### Apache
+
+~~~
+Header always set Except-CT 'max-age=86400, enforce, report-uri="http://example.com/report"';
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header Except-CT 'max-age=86400, enforce, report-uri="http://example.com/report"' always;
+~~~
+
 ## Feature-Policy
 
 ### Options
+
 #### Set feature
 
 * `autoplay`

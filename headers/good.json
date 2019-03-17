@@ -103,5 +103,19 @@
             "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy",
             "https://scotthelme.co.uk/a-new-security-header-feature-policy/"
         ]
+    },
+    "except-ct": {
+        "title": "Except-CT",
+        "description": "Determine if your site expect and use Certificate Transparency feature",
+        "refs": [
+            "https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct-08",
+            "https://tools.ietf.org/html/rfc6962",
+            "https://www.certificate-transparency.org",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#except-ct",
+            "https://httpwg.org/http-extensions/expect-ct.html",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT",
+            "https://scotthelme.co.uk/certificate-transparency-an-introduction/",
+            "https://scotthelme.co.uk/a-new-security-header-expect-ct/"
+        ]
     }
 }
