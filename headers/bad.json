@@ -93,5 +93,28 @@
                 "https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.md"
             ]
         }
-    ]
+    ],
+    "access-control-allow-origin": {
+        "title": "Access-Control-Allow-Origin too open",
+        "description": "Using Access-Control-Allow-Origin with option '*' are too open because any website can request the content",
+        "condition": "\\*",
+        "refs": [
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#access-control-allow-origin",
+            "https://caniuse.com/#feat=cors",
+            "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        ]
+    },
+    "public-key-pins": {
+        "title": "Public-Key-Pins without a backup key",
+        "description": "Using Public-Key-Pins with only one key is dangerous because if you lost your key (CA hacked, renew...) the user can't access the site with the new key once the browser will not accept that",
+        "condition": "^(?!.*pin-sha256.*pin-sha256)",
+        "refs": [
+            "https://tools.ietf.org/html/rfc7469",
+            "https://caniuse.com/#feat=publickeypinning",
+            "https://github.com/gildasio/h2t/blob/naster/docs/headers.md#public-keys-pins",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning",
+            "https://scotthelme.co.uk/hpkp-http-public-key-pinning/"
+        ]
+    }
 }

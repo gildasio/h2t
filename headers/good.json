@@ -81,5 +81,27 @@
             "https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.md",
             "https://hstspreload.org"
         ]
+    },
+    "public-key-pins": {
+        "title": "Public-Key-Pins",
+        "description": "Treat website as valid only if that HTTPS certificate match a hash in this list",
+        "refs": [
+            "https://tools.ietf.org/html/rfc7469",
+            "https://caniuse.com/#feat=publickeypinning",
+            "https://github.com/gildasio/h2t/blob/naster/docs/headers.md#public-keys-pins",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning",
+            "https://scotthelme.co.uk/hpkp-http-public-key-pinning/"
+        ]
+    },
+    "feature-policy": {
+        "title": "Feature-Policy",
+        "description": "Request to browser which APIs to enable or disable",
+        "refs": [
+            "https://w3c.github.io/webappsec-feature-policy/",
+            "https://caniuse.com/#feat=feature-policy",
+            "https://github.com/gildasio/h2t/blob/master/docs/headers.md#feature-policy",
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy",
+            "https://scotthelme.co.uk/a-new-security-header-feature-policy/"
+        ]
     }
 }

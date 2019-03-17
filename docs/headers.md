@@ -112,6 +112,45 @@ session.cookie_secure = True
 
 [Documentation](http://php.net/session.cookie-secure)
 
+## Feature-Policy
+
+### Options
+#### Set feature
+
+* `autoplay`
+* `camera`
+* `document-domain`
+* `encrypted-data`
+* `fullscreen`
+* `geolocation`
+* `microphone`
+* `midi`
+* `payment`
+* `vr`
+
+#### Set origin
+
+* `*`
+* `self`
+* `src`
+* `none`
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set Feature-Policy "camera: 'none'; geolocation: 'none'"
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header Feature-Policy "camera: 'none'; geolocation: 'none'";
+~~~
+
 ## HTTP-Strict-Transport-Security
 
 ### Options
@@ -173,6 +212,31 @@ ServerTokens Prod
 ~~~
 # Nginx
 server_tokens off;
+~~~
+
+## Public-Key-Pins
+
+### Options
+
+* `pin-sha256`: SPKI fingerprint encoded in BASE64
+* `max-age`: in seconds
+* `includeSubDomains`: optional
+* `report-uri`: optional
+
+### Configuration
+
+#### Apache
+
+~~~
+# Apache conf
+Header always set Public-Key-Pins 'pin-sha256="base64=="; pin-sha256="base64=="; max-age=360000; includeSubDomains; report-uri="http://examplo.com/report"'
+~~~
+
+#### Nginx
+
+~~~
+# Nginx conf
+add_header Public-Key-Pins 'pin-sha256="base64=="; pin-sha256="base64=="; max-age=360000; includeSubDomains; report-uri="http://example.com/report"' always;
 ~~~
 
 ## Referrer-Policy
