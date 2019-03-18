@@ -101,6 +101,7 @@ optional arguments:
   -n, --no-redirect     don't follow http redirects
   -u USER_AGENT, --user-agent USER_AGENT
                         set user agent to scan request
+  -k, --insecure        don't verify SSL certificate as valid
   -r, --recommendation  output only recommendations [default]
   -s, --status          output actual status (eg: existent headers only)
 ~~~

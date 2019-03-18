@@ -47,7 +47,7 @@ def scanHeadersURL(url, args, index=0, urls_qtd=1):
     if "://" not in url:
         url = "http://" + url
 
-    response = connection.get(url, redirects=args.no_redirect, user_agent=args.user_agent)
+    response = connection.get(url, redirects=args.no_redirect, user_agent=args.user_agent, insecure=args.insecure)
 
     if index == 0:
         output.printHeader(url, args.print, args.output)
@@ -109,6 +109,7 @@ if __name__ == '__main__':
 
     scanParser.add_argument("-n", "--no-redirect", action="store_false", help="don't follow http redirects")
     scanParser.add_argument("-u", "--user-agent", help="set user agent to scan request")
+    scanParser.add_argument("-k", "--insecure", action="store_false", help="don't verify SSL certificate as valid")
 
     groupOutput = scanParser.add_mutually_exclusive_group()
     groupOutput.add_argument("-r", "--recommendation", action="store_true", default=True, help="output only recommendations [default]")

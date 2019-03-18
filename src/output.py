@@ -4,7 +4,7 @@ from colorama import Fore, Style
 def help():
     print('''Output explanation:
     {b}{g}[+]{reset} Good headers. Already used in your website. Good job!
-    {b}{y}[+]{reset} Good headers. We recommend apply it
+    {b}{y}[+]{reset} Good headers. We recommend applying it
     {b}{r}[-]{reset} Bad headers. We recommend remove it\n'''.format(b=Style.BRIGHT, g=Fore.GREEN, y=Fore.YELLOW, r=Fore.RED, reset=Style.RESET_ALL))
 
 def banner(b):
