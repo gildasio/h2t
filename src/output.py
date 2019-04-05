@@ -1,5 +1,8 @@
 import json
+from urllib.parse import urlparse
+
 from colorama import Fore, Style
+
 
 def help():
     print('''Output explanation:
@@ -7,21 +10,25 @@ def help():
     {b}{y}[+]{reset} Good headers. We recommend applying it
     {b}{r}[-]{reset} Bad headers. We recommend remove it\n'''.format(b=Style.BRIGHT, g=Fore.GREEN, y=Fore.YELLOW, r=Fore.RED, reset=Style.RESET_ALL))
 
+
 def banner(b):
     print(Style.BRIGHT, end="")
     print(b)
     print("https://github.com/gildasio/h2t")
     print(Style.RESET_ALL)
 
-def printBright(message, end="\n"):
+
+def print_bright(message, end="\n"):
     print(Style.BRIGHT + message + Style.RESET_ALL, end=end)
 
-def printColor(message, color):
+
+def print_color(message, color):
     if color == "red":
         color = Fore.RED
     print(color + message + Fore.RESET)
 
-def getStatus(category, status):
+
+def get_status(category, status):
     if category == "good" and status:
         return "applied"
     elif category == "good" and not status:
@@ -29,8 +36,9 @@ def getStatus(category, status):
     elif category == "bad":
         return "toremove"
 
-def printLine(message, level=1, category = None, title = None, status=False):
-    sts = getStatus(category, status)
+
+def print_line(message, level=1, category = None, title = None, status=False):
+    sts = get_status(category, status)
 
     if sts == "applied":
         color = Fore.GREEN
@@ -50,39 +58,44 @@ def printLine(message, level=1, category = None, title = None, status=False):
     else:
         print(" "*4*level + color + Style.BRIGHT + pre + Fore.RESET + message)
 
-def printHeader(url, fields, output):
+
+def print_header(url, fields, output):
     if output == "normal":
-        printBright(url)
+        print_bright(url)
     elif output == "csv":
-        csvHeader(fields)
+        csv_header(fields)
     elif output =="json":
         print('[\n\t{"url": "' + url + '",')
         print('\t"headers": [')
 
-def printFooter(output):
+
+def print_footer(output):
     if output == "json":
         print("\t]}\n]")
 
-def csvHeader(fields, delimiter=";"):
+
+def csv_header(fields, delimiter=";"):
     print("url" + delimiter + "status" + delimiter + "title", end="")
-    
+
     if isinstance(fields, list):
         for field in fields:
             print(delimiter + field, end="")
 
     print()
 
+
 def show(content, fields, category, status=False, output="normal", url=""):
     if output == "normal":
-        showNormal(content, fields, category, status)
+        show_normal(content, fields, category, status)
     elif output == "csv":
-        showCsv(content, fields, category, status, url)
+        show_csv(content, fields, category, status, url)
     elif output == "json":
-        showJson(content, fields, category, status)
+        show_json(content, fields, category, status)
 
-def showJson(content, fields, category, status):
-    sts = getStatus(category, status)
-    
+
+def show_son(content, fields, category, status):
+    sts = get_status(category, status)
+
     result = {
         'title': content['title'],
         'status': sts
@@ -96,8 +109,9 @@ def showJson(content, fields, category, status):
 
     print("\t\t" + json.dumps(result) + ",")
 
-def showCsv(content, fields, category, status, url, delimiter=";"):
-    sts = getStatus(category, status)
+
+def show_csv(content, fields, category, status, url, delimiter=";"):
+    sts = get_status(category, status)
 
     if sts == "applied":
         status = "applied"
@@ -117,27 +131,27 @@ def showCsv(content, fields, category, status, url, delimiter=";"):
             print(delimiter, end="")
             for item in content["refs"]:
                 print(item + " ", end="")
-
     print()
 
-def showNormal(content, fields, category, status):
-    printLine(content["title"], category=category, status=status)
+
+def show_normal(content, fields, category, status):
+    print_line(content["title"], category=category, status=status)
 
     if isinstance(fields, list):
         if "description" in fields:
-            printLine(content["description"], level=2, title="Description")
+            print_line(content["description"], level=2, title="Description")
         if "refs" in fields:
-            printLine('', level=2, title="Refs")
+            print_line('', level=2, title="Refs")
             for item in content["refs"]:
-                printLine(Style.RESET_ALL + item, level=3)
-
+                print_line(Style.RESET_ALL + item, level=3)
     print(Style.RESET_ALL, end="")
+
 
 def results(result, catalog, category, fields=0, status=False, output="normal", url=""):
     for header in result:
         if header not in catalog:
-            printBright(header, end="")
-            printColor(" isn't an option. See available option to -H using 'list -a'", "red")
+            print_bright(header, end="")
+            print_color(" isn't an option. See available option to -H using 'list -a'", "red")
             exit()
 
         if isinstance(result, dict) and isinstance(result[header], list):
@@ -148,20 +162,19 @@ def results(result, catalog, category, fields=0, status=False, output="normal", 
                 show(item, fields, category, status=status, output=output)
         else:
             show(catalog[header], fields, category, status=status, output=output, url=url)
-        
-def verbose(response, verbose):
-    from urllib.parse import urlparse
 
+
+def verbose(response, verbose):
     req = response.request
     if verbose >= 2:
-        printLine(req.method + " " + req.path_url + " HTTP/1.1")
-        printLine("Host: " + urlparse(response.url).netloc)
+        print_line(req.method + " " + req.path_url + " HTTP/1.1")
+        print_line("Host: " + urlparse(response.url).netloc)
         for header in req.headers:
-            printLine(req.headers[header], title=header)
+            print_line(req.headers[header], title=header)
         print()
 
     if verbose >= 1:
-        printLine("HTTP/1.1 " + str(response.status_code) + " " + response.reason)
+        print_line("HTTP/1.1 " + str(response.status_code) + " " + response.reason)
         for header in response.headers:
-            printLine(response.headers[header], title=header)
+            print_line(response.headers[header], title=header)
         print()

@@ -1,11 +1,13 @@
 import json
 
-def readLines(f):
+
+def read_lines(f):
     with open(f) as content:
         lines = [line.rstrip('\n') for line in content]
         return lines
 
-def readJSON(f):
+
+def read_json(f):
     with open(f) as content:
         data = json.load(content)
         return data
