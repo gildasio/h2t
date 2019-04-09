@@ -1,6 +1,7 @@
 from random import choice
 
-banners = [
+
+BANNERS = [
     '''     _     ___  _   
     | |   |__ \| |  
     | |__    ) | |_ 
@@ -94,5 +95,5 @@ e   e    8 eeeee
 '''
 ]
 
-def getBanner():
-    return choice(banners)
+def get_banner():
+    return choice(BANNERS)

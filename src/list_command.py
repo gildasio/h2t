@@ -1,4 +1,4 @@
-def listHeaders(catalog, headers=True):
+def list_headers(catalog, headers=True):
     result = []
     if isinstance(headers, set):
         for header in catalog:
