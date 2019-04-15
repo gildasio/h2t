@@ -65,8 +65,8 @@ def print_header(url, fields, output):
     elif output == 'csv':
         csv_header(fields)
     elif output =='json':
-        print('[\n\t{'url': '' + url + '',')
-        print('\t'headers': [')
+        print('[\n\t{' + url +': '' + url + '',')
+        print('\t' + headers + ': [')
 
 
 def print_footer(output):
