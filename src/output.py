@@ -1,7 +1,8 @@
 import json
 from urllib.parse import urlparse
+from colorama import init, Fore, Style
 
-from colorama import Fore, Style
+init()
 
 
 def help():
@@ -93,7 +94,7 @@ def show(content, fields, category, status=False, output='normal', url=''):
         show_json(content, fields, category, status)
 
 
-def show_son(content, fields, category, status):
+def show_json(content, fields, category, status):
     sts = get_status(category, status)
 
     result = {
