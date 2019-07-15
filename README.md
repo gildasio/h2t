@@ -21,6 +21,14 @@ $ pip install -r requirements.txt
 $ ./h2t.py -h
 ~~~
 
+... or the Docker way:
+~~~
+$ git clone https://github.com/gildasio/h2t
+$ cd h2t
+$ docker build -t h2t .
+$ docker run --rm h2t -h
+~~~
+
 ## Usage
 
 **h2t** has subcommands: *list* and *scan*.
