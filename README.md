@@ -29,6 +29,12 @@ $ docker build -t h2t .
 $ docker run --rm h2t -h
 ~~~
 
+You also can put `alias h2t='docker run --rm h2t'` on a file (such as `~/.bash_aliases`) and run as follows:
+
+~~~
+$ h2t -h
+~~~
+
 ## Usage
 
 **h2t** has subcommands: *list* and *scan*.
