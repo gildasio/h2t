@@ -1,0 +1,56 @@
+
+name: test-build-release
+on: push
+env:
+  IMAGE_TAG: ${{ github.sha }}
+  IMAGE: ${{ github.repository }}
+jobs:
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Markdown test
+        uses: actionshub/markdownlint@v1.0.0
+
+      - name: Dockerfile test
+        uses: burdzwastaken/hadolint-action@1.6.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HADOLINT_ACTION_DOCKERFILE_FOLDER: .
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${IMAGE}:${IMAGE_TAG} .
+
+      - name: Run container-structure-test tests
+        run: |
+          curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mkdir -p $HOME/bin && export PATH=$PATH:$HOME/bin && mv container-structure-test-linux-amd64 $HOME/bin/container-structure-test
+          container-structure-test test --image ${IMAGE}:${IMAGE_TAG} --config structure_test.yaml
+  release:
+    name: Create release
+    needs: tests
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Bump version and push tag
+        id: dump-version
+        uses: mathieudutour/github-tag-action@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Tag and push Docker image
+        run: |
+          DOCKERHUB_USERNAME=`echo "${IMAGE}" | awk -F"/" '{print $1}'`
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u $DOCKERHUB_USERNAME --password-stdin
+          # docker build
+          docker build -t ${IMAGE}:${{ steps.dump-version.outputs.new_tag }} .
+          # docker create latest tag
+          docker tag ${IMAGE}:${{ steps.dump-version.outputs.new_tag }} ${IMAGE}:latest
+          # docker push images
+          docker push ${IMAGE}
