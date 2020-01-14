@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM python:3.7-alpine as build
+=======
+FROM python:3.8.1-alpine as build
+>>>>>>> f42cbaa0437a44151c0057aa772fe4273ffd0cd9
 WORKDIR /wheels
 RUN apk update --no-cache \
   && apk add --no-cache \
@@ -11,7 +15,11 @@ RUN apk update --no-cache \
 COPY requirements.txt /opt/h2t/
 RUN pip3 wheel -r /opt/h2t/requirements.txt
 
+<<<<<<< HEAD
 FROM python:3.7-alpine
+=======
+FROM python:3.8.1-alpine
+>>>>>>> f42cbaa0437a44151c0057aa772fe4273ffd0cd9
 WORKDIR /opt/h2t
 ARG VCS_REF
 ARG VCS_URL="https://github.com/gildasio/h2t"
