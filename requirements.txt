@@ -1,4 +1,4 @@
-certifi==2019.11.28
+certifi==2020.4.5.2
 chardet==3.0.4
 colorama==0.4.3
 idna==2.8
