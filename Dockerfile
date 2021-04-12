@@ -1,4 +1,4 @@
-FROM python:3.9.3-alpine as build
+FROM python:3.9.4-alpine as build
 WORKDIR /wheels
 
 # hadolint ignore=DL3018
@@ -14,7 +14,7 @@ RUN apk update --no-cache && \
 COPY requirements.txt /opt/h2t/
 RUN pip3 wheel -r /opt/h2t/requirements.txt
 
-FROM python:3.9.3-alpine
+FROM python:3.9.4-alpine
 WORKDIR /opt/h2t
 ARG VCS_REF
 ARG VCS_URL="https://github.com/gildasio/h2t"
