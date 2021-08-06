@@ -241,7 +241,7 @@ ServerTokens Prod
 #  Major => Apache/2
 #  Minor => Apache/2.4
 #  Min => Apache/2.4.2
-#  OS => Apache/2.4.2 (Unix) 
+#  OS => Apache/2.4.2 (Unix)
 ~~~
 
 * ModSecurity Way
@@ -340,11 +340,11 @@ add_header X-Content-Type-Options "nosniff" always;
 #### IIS
 
 1. IIS Manager
-2. Select the website
-3. Double click in HTTP Response Headers
-4. Click in Add
-5. Add "X-Content-Type-Options" in Name and "nosniff" in Value
-6. Click to save
+1. Select the website
+1. Double click in HTTP Response Headers
+1. Click in Add
+1. Add "X-Content-Type-Options" in Name and "nosniff" in Value
+1. Click to save
 
 ## X-Download-Options
 
@@ -371,11 +371,11 @@ add_header X-Download-Options "noopen" always;
 ### IIS
 
 1. IIS Manager
-2. Select the website
-3. Double click in HTTP Response Headers
-4. Click in ADd
-5. Add "X-Download-Options" in Name and "noopen" in Value
-6. Click to save
+1. Select the website
+1. Double click in HTTP Response Headers
+1. Click in ADd
+1. Add "X-Download-Options" in Name and "noopen" in Value
+1. Click to save
 
 ## X-Frame-Options
 
@@ -407,11 +407,11 @@ add_header X-Frame-Options "SAMEORIGIN";
 #### IIS
 
 1. IIS Manager
-2. Select the website
-3. Double click in HTTP Response Headers
-4. Click in Add
-5. Add "X-Frame-Option" in Name and the option (eg SAMEORIGIN) in Value
-6. Click to save
+1. Select the website
+1. Double click in HTTP Response Headers
+1. Click in Add
+1. Add "X-Frame-Option" in Name and the option (eg SAMEORIGIN) in Value
+1. Click to save
 
 [Documentation](https://support.office.com/en-us/article/mitigating-framesniffing-with-the-x-frame-options-header-1911411b-b51e-49fd-9441-e8301dcdcd79)
 
@@ -424,10 +424,10 @@ Use [NWebsec](https://docs.nwebsec.com/en/latest/nwebsec/Configuring-xfo.html).
 ### Options
 
 * none  No policy files are allowed anywhere on the target server, including this master policy file.
-master-only Only this master policy file is allowed.
-by-content-type [HTTP/HTTPS only] Only policy files served with Content-Type: text/x-cross-domain-policy are allowed.
-by-ftp-filename [FTP only] Only policy files whose file names are crossdomain.xml (i.e. URLs ending in /crossdomain.xml) are allowed.
-all All policy files on this target domain are allowed.
+* master-only Only this master policy file is allowed.
+* by-content-type [HTTP/HTTPS only] Only policy files served with Content-Type: text/x-cross-domain-policy are allowed.
+* by-ftp-filename [FTP only] Only policy files whose file names are crossdomain.xml (i.e. URLs ending in /crossdomain.xml) are allowed.
+* all All policy files on this target domain are allowed.
 
 ### Configuration
 
@@ -448,11 +448,12 @@ add_header X-Permitted-Cross-Domain-Policies "none" always;
 #### IIS
 
 1. IIS Manager
-2. Select the website
-3. Double click in HTTP Response Headers
-4. Click in ADd
-5. Add "X-Permitted-Cross-Domain-Policies" in Name and the option (eg none) in Value
-6. Click to save
+1. Select the website
+1. Double click in HTTP Response Headers
+1. Click in ADd
+1. Add "X-Permitted-Cross-Domain-Policies" in Name and the option (eg none) in Value
+1. Click to save
+
 ## X-XSS-Protection
 
 ### Options
@@ -472,21 +473,23 @@ add_header X-Permitted-Cross-Domain-Policies "none" always;
 Header always append X-Xss-Protection "1; mode=block"
 
 # htaccess
-<IfModule mod_headers.c> 
-  Header set X-Xss-Protection "1; mode=block" 
+<IfModule mod_headers.c>
+  Header set X-Xss-Protection "1; mode=block"
 </IfModule>
 ~~~
+
 #### Nginx
 
 ~~~
 # Nginx conf
 add_header X-Xss-Protection "1; mode=block" always;
 ~~~
+
 #### IIS
 
 1. IIS Manager
-2. Select the website
-3. Double click in HTTP Response Headers
-4. Click in Add
-5. Add "X-Xss-Protection" in Name and the option (eg `1; mode=block`) in Value
-6. Click to sabe
+1. Select the website
+1. Double click in HTTP Response Headers
+1. Click in Add
+1. Add "X-Xss-Protection" in Name and the option (eg `1; mode=block`) in Value
+1. Click to sabe

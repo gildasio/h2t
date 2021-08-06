@@ -22,6 +22,7 @@ $ ./h2t.py -h
 ~~~
 
 ... or the Docker way:
+
 ~~~
 $ git clone https://github.com/gildasio/h2t
 $ cd h2t

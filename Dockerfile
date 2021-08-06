@@ -1,18 +1,20 @@
-FROM python:3.7-alpine as build
+FROM python:3.9.6-alpine as build
 WORKDIR /wheels
-RUN apk update --no-cache \
-  && apk add --no-cache \
+
+# hadolint ignore=DL3018
+RUN apk update --no-cache && \
+    apk add --no-cache \
     g++ \
     gcc \
     libxml2 \
     libxml2-dev \
     libxslt-dev \
     linux-headers
+
 COPY requirements.txt /opt/h2t/
 RUN pip3 wheel -r /opt/h2t/requirements.txt
 
-
-FROM python:3.7-alpine
+FROM python:3.9.6-alpine
 WORKDIR /opt/h2t
 ARG VCS_REF
 ARG VCS_URL="https://github.com/gildasio/h2t"

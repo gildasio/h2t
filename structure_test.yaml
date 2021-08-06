@@ -1,0 +1,11 @@
+schemaVersion: 2.0.0
+
+fileExistenceTests:
+  - name: 'h2t exist ...'
+    path: /opt/h2t/h2t.py
+    shouldExist: true
+    uid: 0
+    gid: 0
+
+metadataTest:
+  entrypoint: ["python", "h2t.py"]

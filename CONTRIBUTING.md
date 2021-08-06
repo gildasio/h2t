@@ -1,5 +1,14 @@
 # h2t
 
+## Release new version
+
+- create new branch
+- make your changes, if needed
+- commit your changes like
+  - Patch Release: `fix(script): validate input file to prevent empty files`
+  - Minor Release: `feat(dockerimage): add open for multiple input files`
+  - Major Release [look her](https://github.com/mathieudutour/github-tag-action/blob/master/README.md)
+
 ## Contribute
 
 Thank you for your interest in **h2t**. If you want to contribute to **h2t** there is a lot ways:
@@ -18,8 +27,8 @@ Do you know any headers that would be interesting to **h2t** but isn't here? Ope
 
 If do you want to open a [PR][pr] make sure that the database is a JSON file located at `headers` directory.
 
-* `good.json` are headers that would be nice to be implemented
-* `bad.json` are headers that isn't a good idea to maintain in production
+- `good.json` are headers that would be nice to be implemented
+- `bad.json` are headers that isn't a good idea to maintain in production
 
 ~~~ json
 "header-in-lower-case": {
