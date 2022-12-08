@@ -1,4 +1,4 @@
-certifi==2018.11.29
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.4.1
 idna==2.8
