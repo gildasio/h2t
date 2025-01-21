@@ -13,16 +13,17 @@ def check_condition(header, rule):
 def clear_bad_headers(intersect, headers, catalog):
     result = dict()
     for header in intersect:
-        if isinstance(catalog[header], list):
-            for index, rule in enumerate(catalog[header]):
-                if check_condition(headers[header], rule):
-                    if header in result:
-                        result[header].append(index)
-                    else:
-                        result[header] = [index]
-        else:
-            if check_condition(headers[header], catalog[header]):
-                result[header] = True
+        if header in catalog:
+            if isinstance(catalog[header], list):
+                for index, rule in enumerate(catalog[header]):
+                    if check_condition(headers[header], rule):
+                        if header in result:
+                            result[header].append(index)
+                        else:
+                            result[header] = [index]
+            else:
+                if check_condition(headers[header], catalog[header]):
+                    result[header] = True
 
     return result
 
