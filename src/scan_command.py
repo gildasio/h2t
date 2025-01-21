@@ -52,7 +52,7 @@ def ignore_headers(result, ignore):
     elif isinstance(result, set):
         return result - set(ignore)
     elif isinstance(result, dict):
-        for i in result:
+        for i in list(result):
             if i in ignore:
                 del result[i]
         return result

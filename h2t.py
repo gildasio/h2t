@@ -180,6 +180,9 @@ if __name__ == '__main__':
     if isinstance(args.headers, list):
         args.headers = {header.lower() for header in args.headers}
 
+    if isinstance(args.ignore_headers, list):
+        args.ignore_headers = [header.lower() for header in args.ignore_headers]
+
     if 'command' in args:
         args.command(args)
     else:
