@@ -2,5 +2,5 @@ certifi==2018.11.29
 chardet==3.0.4
 colorama==0.4.1
 idna==2.8
-requests==2.21.0
+requests==2.32.4
 urllib3==1.24.2
